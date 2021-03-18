@@ -19,20 +19,15 @@ function updateDisplay(input) {
       display.innerHTML = input;
     }
   } else if (operationOptions.indexOf(input) >= 0) {
-    // console.log("Dealing with a operation");
 
     if (trailingResult === display.innerHTML) {
-      // Operand button pressed twice exeception
       workingOperation = input;
     } else if (workingOperation === "") {
-      // Dealing without an operand
       workingOperation = input;
       trailingResult = display.innerHTML;
       secondaryDisplay.innerHTML = trailingResult;
       display.innerHTML = 0;
     } else {
-      // Dealing with a set operand
-      // console.log(display.innerHTML, " Dealing with set operand");
       trailingResult = calculate(trailingResult, display.innerHTML, workingOperation);
       secondaryDisplay.innerHTML = trailingResult;
       display.innerHTML = 0;
@@ -44,13 +39,10 @@ function updateDisplay(input) {
     workingOperation = "";
     secondaryDisplay.innerHTML = trailingResult;
   } else if (input === "decimal") {
-    // console.log('decimal clicked');
     if (display.innerHTML.indexOf(".") === -1) {
       display.innerHTML += ".";
     }
-    // console.log("decimal skipped because decimal already in number.");
   } else if (input === "negative-value") {
-    // console.log("negative-value selected");
     if (display.innerHTML.indexOf("-1") === -1) {
       display.innerHTML = "-" + display.innerHTML
     } else if (display.innerHTML.indexOf("-1" > -1)) {
@@ -59,8 +51,6 @@ function updateDisplay(input) {
   } else {
     display.innerHTML += input;
   }
-  // 5 - 2 = / 2 =
-  // console.log(trailingResult, "<= trailingResult", display.innerHTML, " <= display.innerHTML", workingOperation, " <= workingOperation");
 }
 
 function clearDisplay() {
@@ -77,19 +67,15 @@ function calculate(firstNumber, secondNumber, operation) {
   secondNumber = parseFloat(secondNumber);
   switch(operation) {
     case "add":
-      // console.log("add calculated")
       result = firstNumber + secondNumber;
       break;
     case "subtract":
-      // console.log("subtract calculated")
       result = firstNumber - secondNumber;
       break;
     case "multiply":
-      // console.log("multiply calculated")
       result = firstNumber * secondNumber;
       break;
     case "divide":
-      // console.log("divide calculated")
       result = firstNumber / secondNumber;
       break;
     default:
